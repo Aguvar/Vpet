@@ -11,21 +11,21 @@ public class DayNightController : MonoBehaviour {
 
     //Range[0,1]
     private float timeOfTheDay;
-    private float sunIntensity;
+    private float sunInitialIntensity;
 
     private readonly float secondsInADay = 86400;
 
     // Use this for initialization
     void Start () {
         sunTransform = GetComponent<Transform>();
-        currentTimeInSeconds = (float)System.DateTime.Now.TimeOfDay.TotalSeconds;
+        currentTimeInSeconds = (float)DateTime.Now.TimeOfDay.TotalSeconds;
         sun = GetComponent<Light>();
-        sunIntensity = sun.intensity;
+        sunInitialIntensity = sun.intensity;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        currentTimeInSeconds = (float)System.DateTime.Now.TimeOfDay.TotalSeconds;
+        currentTimeInSeconds = (float)DateTime.Now.TimeOfDay.TotalSeconds;
 
         timeOfTheDay = currentTimeInSeconds / secondsInADay;
 
@@ -36,20 +36,20 @@ public class DayNightController : MonoBehaviour {
     {
         sunTransform.localRotation = Quaternion.Euler((timeOfTheDay * 360f) - 90, 170, 0);
 
-        //float intensityMultiplier = 1;
-        //if (currentTimeOfDay <= 0.23f || currentTimeOfDay >= 0.75f)
-        //{
-        //    intensityMultiplier = 0;
-        //}
-        //else if (currentTimeOfDay <= 0.25f)
-        //{
-        //    intensityMultiplier = Mathf.Clamp01((currentTimeOfDay - 0.23f) * (1 / 0.02f));
-        //}
-        //else if (currentTimeOfDay >= 0.73f)
-        //{
-        //    intensityMultiplier = Mathf.Clamp01(1 - ((currentTimeOfDay - 0.73f) * (1 / 0.02f)));
-        //}
+        float intensityMultiplier = 1;
+        if (timeOfTheDay <= 0.23f || timeOfTheDay >= 0.75f)
+        {
+            intensityMultiplier = 0;
+        }
+        else if (timeOfTheDay <= 0.25f)
+        {
+            intensityMultiplier = Mathf.Clamp01((timeOfTheDay - 0.23f) * (1 / 0.02f));
+        }
+        else if (timeOfTheDay >= 0.73f)
+        {
+            intensityMultiplier = Mathf.Clamp01(1 - ((timeOfTheDay - 0.73f) * (1 / 0.02f)));
+        }
 
-        //sun.intensity = sunInitialIntensity * intensityMultiplier;
+        sun.intensity = sunInitialIntensity * intensityMultiplier;
     }
 }

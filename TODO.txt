@@ -1,0 +1,6 @@
+Revise day/night control (Sort of done?)
+Make the pet
+	-Make it walk around
+	-Make it idle
+	-Make it have needs
+Save last time played (Also sort of done?)

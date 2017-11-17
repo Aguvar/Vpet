@@ -85,6 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\DayNightController.cs" />
+    <Compile Include="Assets\Scripts\GUIDebug.cs" />
+    <Compile Include="Assets\Scripts\NightLight.cs" />
+    <Compile Include="Assets\Scripts\SimManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
