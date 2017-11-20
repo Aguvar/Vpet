@@ -9,6 +9,7 @@ public class SimManager : MonoBehaviour
 {
 
     private DateTime lastPlayDate;
+    [HideInInspector]
     public double secondsSinceLastSession;
 
     public static SimManager instance;

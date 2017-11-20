@@ -15,7 +15,7 @@ public class GUIDebug : MonoBehaviour {
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(20,20,400,20), "Seconds since last session: " + secondsSinceLastSession);
+        GUI.Label(new Rect(20,20,400,20), "Seconds since last session: " + Mathf.Floor((float)secondsSinceLastSession));
     }
 
     // Update is called once per frame

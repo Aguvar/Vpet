@@ -86,7 +86,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\DayNightController.cs" />
     <Compile Include="Assets\Scripts\GUIDebug.cs" />
+    <Compile Include="Assets\Scripts\GUIManager.cs" />
     <Compile Include="Assets\Scripts\NightLight.cs" />
+    <Compile Include="Assets\Scripts\PetBehaviour.cs" />
     <Compile Include="Assets\Scripts\SimManager.cs" />
   </ItemGroup>
   <ItemGroup>
