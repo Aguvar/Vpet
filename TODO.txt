@@ -1,6 +1,13 @@
 Revise day/night control (Sort of done?)
 Make the pet
-	-Make it walk around
-	-Make it idle
-	-Make it have needs
+	-Make it walk around (Done)
+	-Make it idle (Done I guess)
+	-Make it have needs (Done)
 Save last time played (Also sort of done?)
+Make needs simulate correctly and for the whole day
+Make needs simulate out of time play
+Start preparing polymorphism for various pets
+Start the inventory and items system
+
+BUGS:
+Investigate different resolutions problem - Hunger gets cut off for 1400 x 1050
