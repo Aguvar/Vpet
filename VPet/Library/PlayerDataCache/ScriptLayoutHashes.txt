@@ -126,7 +126,7 @@ a90e94673f50d2237c1b971c138660c6 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 57fde8e76fc7bce23deb0e799d336be7 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SmoothFollow
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DayNightController
 cfa93710d56cd4da2a3b2eec27bc1139 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.PlanarReflection
-2f46e352bdba036c1f2d7a6839014cbb Assembly-CSharp.dll:.GUIManager
+9f7e6475d1edbc4def75542a4c5e22c0 Assembly-CSharp.dll:.GUIManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.Displace
 df56221bb42123af2e75d62dcdb38328 Assembly-CSharp.dll:.SimManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.MobileControlRig

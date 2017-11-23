@@ -9,6 +9,7 @@ public class GUIManager : MonoBehaviour {
     public PetBehaviour pet;
     public Slider[] statSliders;
     public float sliderDampening;
+    public Image HealthSliderFill;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,13 @@ public class GUIManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         UpdateSliders();
+        UpdateHealthColor();
 	}
+
+    private void UpdateHealthColor()
+    {
+        HealthSliderFill.color = Color.Lerp(Color.red, Color.green, statSliders[4].value / statSliders[4].maxValue);
+    }
 
     private void UpdateSliders()
     {

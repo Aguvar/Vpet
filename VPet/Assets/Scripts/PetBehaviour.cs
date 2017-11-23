@@ -37,13 +37,16 @@ public class PetBehaviour : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        stats = new float[] { initialHunger, initialThirst, initialFun, initialEnergy, initialHealth };
+    }
+
     // Use this for initialization
     void Start()
     {
         petTransform = GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
-
-        stats = new float[] { initialHunger, initialThirst, initialFun, initialEnergy, initialHealth };
 
         StartCoroutine(HangAround());
     }
@@ -72,10 +75,14 @@ public class PetBehaviour : MonoBehaviour
         return new Vector3(X, petTransform.position.y, Z);
     }
 
-    private void Simulate(float simTime)
+    public void Simulate(float simTime)
     {
-        stats[0] = stats[0] - simTime;
-        stats[1] = stats[1] - simTime * 0.5f;
+        stats[0] = stats[0] - simTime * 0.022f;
+        stats[1] = stats[1] - simTime * 0.024f;
+        stats[2] = stats[2] - simTime * 0.046f;
+        stats[3] = stats[3] - simTime * 0.0115f;
+        stats[4] = stats[4] + (stats[0] - 100) * 0.02f + (stats[1] - 200) * 0.02f + stats[3] * 0.02f;
+        //Do something about magic numbers afterwards. Abstraction for different pets to have different needs.
     }
 
 

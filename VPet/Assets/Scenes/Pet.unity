@@ -314,9 +314,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 39.3
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -358,7 +358,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 93647227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.46413958, y: -0.8817829, z: 1.6916523}
+  m_LocalPosition: {x: -0.46413958, y: 7.7, z: 1.6916523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -394,7 +394,8 @@ MonoBehaviour:
   - {fileID: 795088000}
   - {fileID: 1052339973}
   - {fileID: 1067838156}
-  sliderDampening: 0.2
+  sliderDampening: 2
+  HealthSliderFill: {fileID: 2138318246}
 --- !u!4 &131804077 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4968542076329308, guid: 341767ee40029cf41940b466c81880ca,
@@ -690,7 +691,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f0953cfe75d5cd04f9bf375b1fbf3b62, type: 2}
+  - {fileID: 2100000, guid: 2909e5011794e90498d3e64375b602e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1386,9 +1387,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 39.3
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1409,7 +1410,7 @@ GameObject:
   - component: {fileID: 823723373}
   m_Layer: 0
   m_Name: Pet
-  m_TagString: Untagged
+  m_TagString: Pet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1427,7 +1428,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 047c154ad735a4b4894ec93882dc95c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1511,11 +1512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efab1f68c749c184da1919b987a6c548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHunger: 70
-  initialThirst: 50
-  initialFun: 30
-  initialEnergy: 80
-  initialHealth: 75
+  initialHunger: 700
+  initialThirst: 500
+  initialFun: 300
+  initialEnergy: 800
+  initialHealth: 750
   corralBoundStart: {fileID: 1274298721}
   corralBoundEnd: {fileID: 1808462310}
 --- !u!1 &839749520
@@ -1758,9 +1759,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 39.3
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1842,9 +1843,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 39.3
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2454,9 +2455,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 39.3
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

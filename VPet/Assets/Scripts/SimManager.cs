@@ -7,10 +7,13 @@ using UnityEngine;
 
 public class SimManager : MonoBehaviour
 {
-
-    private DateTime lastPlayDate;
     [HideInInspector]
     public double secondsSinceLastSession;
+    
+    private DateTime lastPlayDate;
+    private PetBehaviour pet;
+    private float[] loadedStats;
+    private bool loaded = false;
 
     public static SimManager instance;
 
@@ -30,7 +33,14 @@ public class SimManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        pet = GameObject.FindGameObjectWithTag("Pet").GetComponent<PetBehaviour>();
 
+
+        if (loaded)
+        {
+            pet.Stats = loadedStats;//What happens if there is no save data? 
+        }
+        pet.Simulate((float)secondsSinceLastSession);
 
     }
 
@@ -49,6 +59,9 @@ public class SimManager : MonoBehaviour
             file.Close();
 
             lastPlayDate = data.lastPlayDate;
+            loadedStats = data.petStats;
+
+            loaded = true;
         }
         else
         {
@@ -69,6 +82,7 @@ public class SimManager : MonoBehaviour
         lastPlayDate = DateTime.Now;
         SessionData data = new SessionData();
         data.lastPlayDate = lastPlayDate;
+        data.petStats = pet.Stats;
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Open(Application.persistentDataPath + "/sessionData.dat", FileMode.Open);
@@ -88,4 +102,5 @@ public class SimManager : MonoBehaviour
 class SessionData
 {
     public DateTime lastPlayDate;
+    public float[] petStats;
 }
