@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class PetBehaviour : MonoBehaviour
 {
 
@@ -13,16 +14,18 @@ public class PetBehaviour : MonoBehaviour
     public float initialEnergy;
     public float initialHealth;
 
+    public Transform corralBoundStart;
+    public Transform corralBoundEnd;
+    
+
     //{Hunger, Thirst, Fun, Energy, Health}
     private float[] stats;
-
-    //private bool moving = false;//Revise
 
     private Transform petTransform;
     private NavMeshAgent agent;
 
-    public Transform corralBoundStart;
-    public Transform corralBoundEnd;
+    private Quaternion faceCameraVector;
+
 
     public float[] Stats
     {
@@ -48,6 +51,8 @@ public class PetBehaviour : MonoBehaviour
         petTransform = GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
 
+        faceCameraVector = Quaternion.LookRotation(Vector3.back, Vector3.up);
+
         StartCoroutine(HangAround());
     }
 
@@ -55,6 +60,7 @@ public class PetBehaviour : MonoBehaviour
     void Update()
     {
         Simulate(Time.deltaTime);
+        petTransform.rotation = faceCameraVector;
     }
 
     private IEnumerator HangAround()

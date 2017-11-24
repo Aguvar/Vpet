@@ -3,11 +3,18 @@ Make the pet
 	-Make it walk around (Done)
 	-Make it idle (Done I guess)
 	-Make it have needs (Done)
-Save last time played (More done than before but still requires more polish, try catch statements)
+	-Apply the sprites on the pet
+Save last time played (Much more polished)
 Make needs simulate correctly and for the whole day (Experimenting)
 Make needs simulate out of time play(Done)
 Start preparing polymorphism for various pets
-Start the inventory and items system
+Create first placeholder items
+Implement inventory GUI
+Make items usable on pet
+Make a rock asset
+Make a nightlamp
+Make lightbugs
+Get the goddamn sprites in there dammit.
 
 BUGS:
 Investigate different resolutions problem - Hunger gets cut off for 1400 x 1050

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
+using Assets.Scripts;
 
 public class SimManager : MonoBehaviour
 {
@@ -51,25 +52,19 @@ public class SimManager : MonoBehaviour
 
     private void Load()
     {
-        if (File.Exists(Application.persistentDataPath + "/sessionData.dat"))
+        PetSaveGame save;
+        try
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/sessionData.dat", FileMode.Open);
-            SessionData data = (SessionData)bf.Deserialize(file);
-            file.Close();
-
-            lastPlayDate = data.lastPlayDate;
-            loadedStats = data.petStats;
-
+            save = (PetSaveGame)SaveGameSystem.LoadGame("VPetSave");
             loaded = true;
         }
-        else
+        catch (NonExistingSaveException e)
         {
-            File.Create(Application.persistentDataPath + "/sessionData.dat");
-            lastPlayDate = DateTime.Now;
+            save = new PetSaveGame();
         }
 
-        secondsSinceLastSession = (DateTime.Now - lastPlayDate).TotalSeconds;
+        loadedStats = save.petStats;
+        secondsSinceLastSession = (DateTime.Now - save.lastPlayDate).TotalSeconds;
     }
 
     private void OnDisable()
@@ -79,28 +74,15 @@ public class SimManager : MonoBehaviour
 
     private void Save()
     {
-        lastPlayDate = DateTime.Now;
-        SessionData data = new SessionData();
-        data.lastPlayDate = lastPlayDate;
-        data.petStats = pet.Stats;
+        PetSaveGame save = new PetSaveGame();
+        save.lastPlayDate = DateTime.Now;
+        save.petStats = pet.Stats;
 
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "/sessionData.dat", FileMode.Open);
-
-        bf.Serialize(file, data);
-        file.Close();
+        SaveGameSystem.SaveGame(save, "VPetSave");
     }
 
-    // Update is called once per frame
     void Update()
     {
 
     }
-}
-
-[Serializable]
-class SessionData
-{
-    public DateTime lastPlayDate;
-    public float[] petStats;
 }
