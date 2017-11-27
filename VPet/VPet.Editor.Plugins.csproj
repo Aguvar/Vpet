@@ -279,13 +279,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="VPet.Plugins.csproj">
-      <Project>{7AB7AEBA-3F9C-7447-06FC-D90D7E60FA2F}</Project>
-      <Name>VPet.Plugins</Name>
-    </ProjectReference>
     <ProjectReference Include="VPet.csproj">
       <Project>{E74491EA-FD0E-2F62-E24B-A0D76089E272}</Project>
       <Name>VPet</Name>
+    </ProjectReference>
+    <ProjectReference Include="VPet.Plugins.csproj">
+      <Project>{7AB7AEBA-3F9C-7447-06FC-D90D7E60FA2F}</Project>
+      <Name>VPet.Plugins</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

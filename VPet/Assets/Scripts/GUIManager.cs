@@ -13,7 +13,7 @@ public class GUIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        pet = GameObject.FindGameObjectWithTag("Pet").GetComponent<PetBehaviour>();
 	}
 	
 	// Update is called once per frame
