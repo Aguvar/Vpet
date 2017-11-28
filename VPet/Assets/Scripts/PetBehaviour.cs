@@ -24,6 +24,7 @@ public class PetBehaviour : MonoBehaviour
     private Transform petTransform;
     private NavMeshAgent agent;
     private Animator animator;
+    private SpriteRenderer renderer;
 
     private Quaternion faceCameraVector;
 
@@ -52,10 +53,12 @@ public class PetBehaviour : MonoBehaviour
         petTransform = GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        renderer = GetComponent<SpriteRenderer>();
 
         faceCameraVector = Quaternion.LookRotation(Vector3.back, Vector3.up);
 
         StartCoroutine(HangAround());
+        StartCoroutine(animationController());
     }
 
     // Update is called once per frame
@@ -69,11 +72,12 @@ public class PetBehaviour : MonoBehaviour
     {
         while (true)
         {
-            //TODO: Stopped working here.
-
-            animator.SetBool("Moving", true);
+            bool moving = agent.velocity.magnitude > 0.3;
+            renderer.flipX = agent.velocity.x <= 0;
+            
+            animator.SetBool("Moving", moving);
+            yield return new WaitForSeconds(0.1f);
         }
-        yield return null;
     }
 
     private IEnumerator HangAround()
