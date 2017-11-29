@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Assets.Scripts;

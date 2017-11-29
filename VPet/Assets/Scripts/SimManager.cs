@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 using UnityEngine;
 using Assets.Scripts;
+using System.Collections.Generic;
 
 public class SimManager : MonoBehaviour
 {
@@ -15,6 +12,8 @@ public class SimManager : MonoBehaviour
     private PetBehaviour pet;
     private float[] loadedStats;
     private bool loaded = false;
+
+    private List<InventoryItem> inventory; 
 
     public static SimManager instance;
 
@@ -35,6 +34,7 @@ public class SimManager : MonoBehaviour
     void Start()
     {
         pet = GameObject.FindGameObjectWithTag("Pet").GetComponent<PetBehaviour>();
+
 
 
         if (loaded)

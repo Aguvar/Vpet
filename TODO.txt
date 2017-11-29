@@ -14,10 +14,7 @@ Make items usable on pet
 Make a rock asset
 Make a nightlamp
 Make lightbugs
-Get the goddamn sprites in there dammit.
-Put the editor files in an "Editor" folder. (IMPORTANT)
 
 
 BUGS:
 Investigate different resolutions problem - Hunger gets cut off for 1400 x 1050
-Not building
