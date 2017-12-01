@@ -6,6 +6,7 @@ public class NightLight : MonoBehaviour {
 
     public float baseIntensity;
     public float flickerRange;
+    public float flickerPeriod;
 
     private Light lightSource;
 
@@ -24,10 +25,13 @@ public class NightLight : MonoBehaviour {
 
     private IEnumerator Flicker()
     {
-        float intensityChange = Random.Range(-flickerRange, flickerRange);
+        while (true)
+        {
+            float intensityChange = Random.Range(-flickerRange, flickerRange);
 
-        lightSource.intensity = baseIntensity + intensityChange;
+            lightSource.intensity = baseIntensity + intensityChange;
 
-        yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(flickerPeriod); 
+        }
     }
 }

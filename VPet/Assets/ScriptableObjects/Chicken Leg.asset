@@ -14,7 +14,7 @@ MonoBehaviour:
   Id: 1
   Name: Chicken Leg
   Price: 50
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: b6e6317198526a74c9a8275feb6c2787, type: 3}
   Effect:
   - 500
   - -60

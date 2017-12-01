@@ -35,7 +35,7 @@ public class SimManager : MonoBehaviour
     {
         pet = GameObject.FindGameObjectWithTag("Pet").GetComponent<PetBehaviour>();
 
-
+        inventory = new List<InventoryItem>();
 
         if (loaded)
         {
