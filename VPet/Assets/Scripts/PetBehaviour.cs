@@ -22,7 +22,7 @@ public class PetBehaviour : MonoBehaviour
     private Transform petTransform;
     private NavMeshAgent agent;
     private Animator animator;
-    private SpriteRenderer renderer;
+    private SpriteRenderer sRenderer;
 
     private Quaternion faceCameraVector;
 
@@ -51,7 +51,7 @@ public class PetBehaviour : MonoBehaviour
         petTransform = GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        renderer = GetComponent<SpriteRenderer>();
+        sRenderer = GetComponent<SpriteRenderer>();
 
         faceCameraVector = Quaternion.LookRotation(Vector3.back, Vector3.up);
 
@@ -71,11 +71,41 @@ public class PetBehaviour : MonoBehaviour
         while (true)
         {
             bool moving = agent.velocity.magnitude > 0.3;
-            renderer.flipX = agent.velocity.x <= 0;
+            sRenderer.flipX = agent.velocity.x <= 0;
             
             animator.SetBool("Moving", moving);
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    private void DecideNextAction()
+    {
+        /*
+        Possible decisions:
+            Do nothing
+            Walk
+            Run
+            Check for food
+            Check for water
+        */
+        //int decision = ; Think about this, a lot.
+        //switch (decision)
+        //{
+        //    case 0:
+        //        break;
+        //    case 1:
+        //        break;
+        //    case 2:
+        //        break;
+        //    case 3:
+        //        break;
+        //    case 4:
+        //        break;
+        //    case 5:
+        //        break;
+        //}
+
+        //If food and hungry go to food and eat.
     }
 
     private IEnumerator HangAround()
@@ -84,14 +114,16 @@ public class PetBehaviour : MonoBehaviour
         {
             Vector3 destination = GenerateDestination();
             agent.SetDestination(destination);
-            yield return new WaitForSeconds(8);//Think about how to make it move after it stopped moving, not after an arbitrary number of seconds. 
+            yield return new WaitUntil(() => agent.velocity.magnitude == 0);
         }
     }
 
+    
+
     private Vector3 GenerateDestination()
     {
-        float X = UnityEngine.Random.Range(corralBoundStart.position.x, corralBoundEnd.position.x);
-        float Z = UnityEngine.Random.Range(corralBoundStart.position.z, corralBoundEnd.position.z);
+        float X = Random.Range(corralBoundStart.position.x, corralBoundEnd.position.x);
+        float Z = Random.Range(corralBoundStart.position.z, corralBoundEnd.position.z);
 
         return new Vector3(X, petTransform.position.y, Z);
     }
