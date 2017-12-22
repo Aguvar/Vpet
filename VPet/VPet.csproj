@@ -231,8 +231,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Inventory.cs" />
     <Compile Include="Assets\Scripts\Consumable.cs" />
     <Compile Include="Assets\Scripts\DayNightController.cs" />
+    <Compile Include="Assets\Scripts\Enums\Behaviours.cs" />
     <Compile Include="Assets\Scripts\GUIDebug.cs" />
     <Compile Include="Assets\Scripts\GUIManager.cs" />
     <Compile Include="Assets\Scripts\InventoryItem.cs" />
@@ -241,6 +243,8 @@
     <Compile Include="Assets\Scripts\NonExistingSaveException.cs" />
     <Compile Include="Assets\Scripts\PetBehaviour.cs" />
     <Compile Include="Assets\Scripts\PetSaveGame.cs" />
+    <Compile Include="Assets\Scripts\RandomChooser.cs" />
+    <Compile Include="Assets\Scripts\SaveExitButtonHandler.cs" />
     <Compile Include="Assets\Scripts\SaveGame.cs" />
     <Compile Include="Assets\Scripts\SaveGameSystem.cs" />
     <Compile Include="Assets\Scripts\SimManager.cs" />

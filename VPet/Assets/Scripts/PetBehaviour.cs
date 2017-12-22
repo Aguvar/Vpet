@@ -14,6 +14,9 @@ public class PetBehaviour : MonoBehaviour
 
     public Transform corralBoundStart;
     public Transform corralBoundEnd;
+
+    public int minIdleseconds;
+    public int maxIdleSeconds;
     
 
     //{Hunger, Thirst, Fun, Energy, Health}
@@ -25,6 +28,8 @@ public class PetBehaviour : MonoBehaviour
     private SpriteRenderer sRenderer;
 
     private Quaternion faceCameraVector;
+
+    private bool readyForNextAction;
 
 
     public float[] Stats
@@ -78,7 +83,7 @@ public class PetBehaviour : MonoBehaviour
         }
     }
 
-    private void DecideNextAction()
+    private PetBehaviours DecideNextAction()
     {
         /*
         Possible decisions:
@@ -88,37 +93,58 @@ public class PetBehaviour : MonoBehaviour
             Check for food
             Check for water
         */
-        //int decision = ; Think about this, a lot.
-        //switch (decision)
-        //{
-        //    case 0:
-        //        break;
-        //    case 1:
-        //        break;
-        //    case 2:
-        //        break;
-        //    case 3:
-        //        break;
-        //    case 4:
-        //        break;
-        //    case 5:
-        //        break;
-        //}
 
-        //If food and hungry go to food and eat.
+        RandomBag<PetBehaviours> behavioursBag = new RandomBag<PetBehaviours>();
+
+        //Work on making these influenced by pet stats
+        behavioursBag.AddElement(PetBehaviours.Idle, 100);
+        behavioursBag.AddElement(PetBehaviours.Walk, 50);
+
+        return behavioursBag.ChooseRandom();
     }
 
     private IEnumerator HangAround()
     {
         while (true)
         {
-            Vector3 destination = GenerateDestination();
-            agent.SetDestination(destination);
-            yield return new WaitUntil(() => agent.velocity.magnitude == 0);
+            switch (DecideNextAction())
+            {
+                case PetBehaviours.Idle:
+                    StartCoroutine(BeIdleForSomeSeconds());
+                    break;
+                case PetBehaviours.Walk:
+                    StartCoroutine(WalkSomewhere());
+                    break;
+                case PetBehaviours.Run:
+                    break;
+                case PetBehaviours.Eat:
+                    break;
+                default:
+                    break;
+            }
+            readyForNextAction = false;
+            yield return new WaitUntil(() => isReadyForNextAction());
         }
     }
 
-    
+    private IEnumerator BeIdleForSomeSeconds()
+    {
+        yield return new WaitForSeconds(Random.Range(3,8));
+        readyForNextAction = true;
+    }
+
+    private IEnumerator WalkSomewhere()
+    {
+        Vector3 destination = GenerateDestination();
+        agent.SetDestination(destination);
+        yield return new WaitUntil(() => agent.velocity.magnitude == 0);
+        readyForNextAction = true;
+    }
+
+    private bool isReadyForNextAction()
+    {
+        return readyForNextAction;
+    }
 
     private Vector3 GenerateDestination()
     {
